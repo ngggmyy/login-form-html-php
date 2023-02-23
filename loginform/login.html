@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script>
+    function validateInput() {
+        let usernameField = document.getElementById('username');
+        let passwordField = document.getElementById('password');
+        let errorField = document.getElementById('errordanger');
+    
+        let username = usernameField.value;
+        let password = passwordField.value;
+    
+        if(username === "") {
+            errorField.innerHTML = 'Please enter your username';
+            return false;
+        }
+        else if (password === "") {
+            errorField.innerHTML = 'Please enter your password';
+            return false;
+        }
+        else if (password.length < 6)  {
+            errorField.innerHTML = 'Your password must more than 5 characters';
+            return false;
+        } 
+        errorField.innerHTML = "";
+        return true;
+    }
+    
+</script>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <h3 class="text-center text-secondary mt-5 mb-3">Login</h3>
+            <form method="post" class="border rounded w-100 mb-5 mx-auto px-3 pt-3 bg-light" action="http://localhost:8080/loginform/login.php" onsubmit="return validateInput()">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input id="username" type="text" class="form-control" name="user" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="pass" class="form-control" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <p style="color: red" id="errordanger"><p>
+                    <button class="btn btn-success px-5" name="Submit" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
